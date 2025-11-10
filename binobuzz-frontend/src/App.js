@@ -5,18 +5,18 @@ function App() {
   const [trends, setTrends] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch("https://binobuzz-production.up.railway.app/trends")
-      .then((res) => res.json())
-      .then((data) => {
-        setTrends(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch trends:", err);
-        setLoading(false);
-      });
-  }, []);
+ useEffect(() => {
+  fetch("/api/trends")
+    .then((res) => res.json())
+    .then((data) => {
+      setTrends(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Failed to fetch trends:", err);
+      setLoading(false);
+    });
+}, []);
 
   return (
     <div className="app">
